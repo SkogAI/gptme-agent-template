@@ -3,15 +3,15 @@ name = "gptme-agent"
 
 [prompt]
 files = [
-  "README.md",
-  "ARCHITECTURE.md",
-  "ABOUT.md",
-  "SOUL.md",
-  "TASKS.md",
-  "TOOLS.md",
-  "lessons/README.md",
-  "projects/README.md",
-  "gptme.toml"
+    "README.md",
+    "ARCHITECTURE.md",
+    "ABOUT.md",
+    "SOUL.md",
+    "TASKS.md",
+    "TOOLS.md",
+    "lessons/README.md",
+    "projects/README.md",
+    "gptme.toml",
 ]
 context_cmd = "scripts/context.sh"
 
@@ -27,8 +27,8 @@ dirs = ["lessons", "skills", "gptme-contrib/lessons", "gptme-contrib/skills"]
 
 [plugins]
 # Plugin directories to search for custom plugins
-# paths = ["plugins"]
-# enabled = ["my_plugin"]
+paths = ["gptme-contrib/plugins"]
+enabled = []
 
 [env]
 # Environment variables available to the agent
