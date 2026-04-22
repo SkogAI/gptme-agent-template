@@ -1,3 +1,4 @@
 [submodule "gptme-contrib"]
 	path = gptme-contrib
-	url = https://github.com/gptme/gptme-contrib.git
+	url = git@github.com:SkogAI/agent-template.git
+    branch = master
