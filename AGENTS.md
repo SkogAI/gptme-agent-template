@@ -39,10 +39,12 @@ echo "entry" >> journal/2025-10-14/topic.md
 - **Stage explicitly**: Use `git add <files>`, never `git add .` or `git commit -a`
 - **Multi-session safety**: If running concurrent sessions (autonomous + operator), use
   `git safe-commit` (flock-based wrapper in `bin/`) to prevent prek stash/restore race conditions.
-  Requires `bin/` in PATH (e.g. `export PATH="$PWD/bin:$PATH"` in `.envrc`):
+  Requires `bin/` in PATH (e.g. `PATH_add"` in `.envrc`):
+
   ```bash
   git safe-commit file1.py file2.py -m "feat: description"
   ```
+
 - **PR merge strategy**: Always `--squash` when merging
 - **No AI attribution**: Never add `Co-Authored-By: Claude` or "Generated with Claude Code" to commits/PRs
 
@@ -71,9 +73,11 @@ echo "entry" >> journal/2025-10-14/topic.md
 Run automatically on commit. Don't bypass with `--no-verify` unless explicitly asked.
 
 > **Important**: Always ensure gptme-contrib submodule is up to date before running hooks:
+>
 > ```bash
 > git submodule update --init --recursive
 > ```
+>
 > This prevents false positives in link checking for files referenced from `gptme-contrib/lessons/`.
 
 ```bash
@@ -98,11 +102,13 @@ make typecheck   # Type checking
 ## Multi-Runtime Notes
 
 ### gptme
+
 - Identity files auto-loaded via `gptme.toml`
 - `context_cmd` runs `scripts/context.sh` for dynamic context
 - Lessons matched by keywords automatically
 
 ### Claude Code / Codex
+
 - Only this file is auto-loaded — **manually read bootstrap files** listed above
 - Run `scripts/context.sh` at session start for dynamic context (tasks, GitHub, git status)
 - No automatic lesson injection — check `lessons/` when relevant
@@ -153,13 +159,15 @@ gh pr create
 
 When writing GitHub issue/PR comments that reference issues in a **different** repo,
 always use the full `org/repo#N` format — GitHub auto-links bare `#N` to the
-*current* repo, making cross-repo references silently wrong:
+_current_ repo, making cross-repo references silently wrong:
 
 ```markdown
 <!-- Wrong: links to current repo's issue #42 -->
+
 See #42 for context.
 
 <!-- Correct: links to the intended repo -->
+
 See gptme/gptme#42 for context.
 See https://github.com/gptme/gptme/issues/42 for context.
 ```
